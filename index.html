@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MC Online Skin</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    body {
+      background-image: url('https://api.dujin.org/bing/1920.php'); /* 替换为你的背景图片路径 */
+      background-size: cover;
+      background-attachment: fixed;
+      background-blur: 10px; /* 添加毛玻璃效果 */
+    }
+
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8); /* 导航栏背景颜色 */
+      padding: 10px;
+      text-align: left;
+    }
+
+    #navbar h1 {
+      margin: 0;
+      padding: 0;
+    }
+
+    #countdown-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(155, 155, 155, 0.8); /* 倒计时框背景颜色 */
+      border-radius: 10px; /* 添加圆角框框 */
+      animation: fade-in 1s ease-in-out; /* 添加动画效果 */
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    #countdown {
+      font-size: 36px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    #footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8); /* 尾页背景颜色 */
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar">
+    <h1>MC Online Skin</h1>
+  </div>
+
+  <div id="countdown-wrapper">
+    <h2>MC Online Skin皮肤站 服务器维护中</h2>
+    <div id="countdown"></div>
+    <h2>【MCOLS Cloud 服务状态】⚠️❌✅</h2>
+    <h4>（崩溃：⚠️/关闭：❌/开启：✅）</h4>
+    <h3>MC Online Skin皮肤站 | 状态：❌</h3>
+    <h3>MCOLS Bing Copilot | 状态：✅</h3>
+    <h3>chat gpt web面板 | 状态：✅</h3>
+    <h3>chat gpt new面板 | 状态：⚠️</h3>
+    <h3>openai镜像数据库 | 状态：✅</h3>
+    <h3>openai镜像数网站 | 状态：✅</h3>
+  </div>
+
+  <div id="footer">
+    <p>联系方式(QQ)：828399016</p>
+  </div>
+
+    <script>
+        var deadline = new Date("2023-12-31T00:00:00"); // 设定结束日期为2023年12月31日
+        var countdownElement = document.getElementById('countdown');
+        var serverConsole = document.getElementById('server-console');
+        var footer = document.getElementById('footer');
+        footer.addEventListener('click', function () {
+            serverConsole.classList.toggle('active');
+        });
+        function updateCountdown() {
+            var now = new Date();
+            var remaining = deadline - now;
+            var days = Math.floor(remaining / 1000 / 60 / 60 / 24);
+            var hours = Math.floor((remaining / 1000 / 60 / 60) % 24);
+            var minutes = Math.floor((remaining / 1000 / 60) % 60);
+            var seconds = Math.floor((remaining / 1000) % 60);
+            countdownElement.innerText ="还有"+ days + "天" + hours + "小" + minutes + "分钟" + (seconds < 10 ? '0' : '') + seconds + "秒";
+            if (remaining > 0) {
+                setTimeout(updateCountdown, 1000);
+            } else {
+                countdownElement.innerText = '我们马上回来！（屁颠屁颠去找管理员~）';
+            }
+        }
+        updateCountdown();
+    </script>
+</body>
+</html>
